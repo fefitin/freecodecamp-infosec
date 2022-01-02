@@ -4,6 +4,8 @@ const app = express();
 
 //Hide powered by header
 app.use(helmet.hidePoweredBy());
+//X-Frame-Options: DENY to prevent clickjacking (among others)
+app.use(helmet.frameguard({ action: 'deny' }));
 
 module.exports = app;
 const api = require('./server.js');
